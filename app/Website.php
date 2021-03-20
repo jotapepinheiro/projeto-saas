@@ -6,11 +6,10 @@ use Hyn\Tenancy\Abstracts\SystemModel;
 use Hyn\Tenancy\Contracts\Website as WebsiteContract;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laravel\Cashier\Billable;
 
 class Website extends SystemModel implements WebsiteContract
 {
-    use SoftDeletes, Billable;
+    use SoftDeletes;
 
     /**
      * Get all of the hostnames for the Website.

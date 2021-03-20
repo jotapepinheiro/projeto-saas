@@ -20,11 +20,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $website = new Website;
         app(Environment::class)->tenant();
-        $invoices = $website->invoicesIncludingPending();
 
-        return view('home')->with(['invoices' => $invoices]);
+        return view('home');
     }
 
     public function invoice(Request $request, $invoiceId)

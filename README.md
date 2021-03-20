@@ -56,17 +56,7 @@ php artisan tenant:create edson "Edson Luis" edson@example.com
 ```
 
 ## Stripe
-https://stripe.com/en-br/pricing
-
-https://stripe.com/docs/testing
-
-## Planos Stripe
-Plano Básico Mensal - plan_H36ofy5qgrq4II
-Plano Padrão Mensal - plan_H36r0V25JNUMnk
-Plano Premium Mensal - plan_H36sQiEXOWydsp
-
-## Paypal SandBox https://sandbox.paypal.com
-joaopinheiro.ti-buyer@gmail.com
-joaopinheiro.ti-facilitator@gmail.com
+## Paypal
+## Paddle
 
 [l-Doc-Docker]: docker/README.md

@@ -11,7 +11,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 # make sure apt is up to date
 RUN apt-get update --fix-missing
 RUN apt-get install -y curl
-RUN apt-get install -y build-essential libssl-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev libzip-dev libxml2-dev
+RUN apt-get install -y build-essential git libssl-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev libzip-dev libxml2-dev
 
 ###########################################################################
 # PHP COMPOSER

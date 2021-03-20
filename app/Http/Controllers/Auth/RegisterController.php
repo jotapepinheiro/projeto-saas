@@ -55,10 +55,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $website = new Website;
-        return view('auth.register', [
-            'intent' => $website->createSetupIntent()
-        ]);
+        //$website = new Website;
+        return view('auth.register');
     }
 
     /**
@@ -84,25 +82,20 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'product' => ['required', Rule::in( $validPlans )],
-            'stripePaymentMethod' => ['required', 'string'],
+            //'stripePaymentMethod' => ['required', 'string'],
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \Loja\User
+     * @param array $data
+     * @return User
      */
-    protected function create(array $data)
+    protected function create(array $data): User
     {
         // Use the Tenancy package command to create the tenant
-        $hostname = $this->createTenant(
-            $data['fqdn'],
-            $data['product'],
-            $data['stripePaymentMethod'],
-            $data['email']
-        );
+        $hostname = $this->createTenant($data['fqdn']);
 
         // swap the environment over to the hostname
         app( Environment::class )->hostname( $hostname );
@@ -114,7 +107,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    private function createTenant( $fqdn, $product, $paymentMethod, $email )
+    private function createTenant( $fqdn ): Hostname
     {
         // first create the 'website'
         $website = new Website;
@@ -124,18 +117,6 @@ class RegisterController extends Controller
         $hostname = new Hostname;
         $hostname->fqdn = $fqdn;
         app( HostnameRepository::class )->attach( $hostname, $website );
-
-        // it's important to choose the plan_ ID, not prod_ ID
-        $plans = [
-            'basico' => 'plan_H36ofy5qgrq4II',
-            'padrao' => 'plan_H36r0V25JNUMnk',
-            'premium' => 'plan_H36sQiEXOWydsp'
-        ];
-
-        // create the subscription
-        $website->newSubscription( $product, $plans[$product] )->create( $paymentMethod, [
-            'email' => $email
-        ]);
 
         return $hostname;
     }
