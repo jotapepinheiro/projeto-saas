@@ -1,0 +1,16 @@
+/node_modules
+/.idea/
+/.vscode/
+/.DS_Store
+/public/storage
+/storage/*.key
+/vendor
+/docker/logs/
+/docker/database/
+/bootstrap/cache/
+.env
+.env.backup
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
+/migrate.sql

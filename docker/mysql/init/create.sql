@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS `loja_tenancy`;
+CREATE USER IF NOT EXISTS 'adm_tenancy'@'%' IDENTIFIED BY 'admTenancy';
+GRANT ALL PRIVILEGES ON *.* TO 'adm_tenancy'@'%' WITH GRANT OPTION;
