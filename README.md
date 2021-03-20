@@ -1,11 +1,15 @@
 ### Projeto Loja SAAS
 https://www.seismicpixels.com/creating-a-laravel-saas-framework/
 
+- Caso queira usar o docker siga as [instruções][l-Doc-Docker]
+
 ```sql
-CREATE DATABASE IF NOT EXISTS tenancy;
-CREATE USER IF NOT EXISTS tenancy@localhost IDENTIFIED BY 'someRandomPassword';
-GRANT ALL PRIVILEGES ON *.* TO tenancy@localhost WITH GRANT OPTION;
+-- Obs: O comando abaixo já é executado pelo docker
+CREATE DATABASE IF NOT EXISTS `loja_tenancy`;
+CREATE USER IF NOT EXISTS 'adm_tenancy'@'%' IDENTIFIED BY 'admTenancy';
+GRANT ALL PRIVILEGES ON *.* TO 'adm_tenancy'@'%' WITH GRANT OPTION;
 ```
+
 ```shell
 # Instalar todos os pacotes necessários para executar o backend do projeto
 > composer install
@@ -64,3 +68,5 @@ Plano Premium Mensal - plan_H36sQiEXOWydsp
 ## Paypal SandBox https://sandbox.paypal.com
 joaopinheiro.ti-buyer@gmail.com
 joaopinheiro.ti-facilitator@gmail.com
+
+[l-Doc-Docker]: docker/README.md

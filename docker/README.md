@@ -93,20 +93,9 @@ ___
 ___
 
 > docker-compose exec php-fpm bash
-
-```shell script
-composer dump-autoload
-php artisan clear-compiled
-php artisan optimize
-php artisan cache:clear
-chmod -R 777 storage
-```
-
 ___
 
 ### LIMPAR PROJETO LARAVEL SEM ALIAS
-
-> docker-compose exec php-fpm bash
 
 ```shell script
 composer dump-autoload
